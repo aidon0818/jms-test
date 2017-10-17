@@ -3,7 +3,12 @@ package com.jms.topic;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-
+/**
+* @Author dong_liu
+* @Date  2017/10/17 11:23
+ *
+ * 消费者
+*/
 public class AppConsumer {
     private static final String URL="tcp://127.0.0.1:61616";
     private static final String topicName="topic-test";
