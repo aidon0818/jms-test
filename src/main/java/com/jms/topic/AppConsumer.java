@@ -1,6 +1,8 @@
 package com.jms.topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.advisory.AdvisorySupport;
+import org.apache.activemq.command.ActiveMQMessage;
 
 import javax.jms.*;
 /**
@@ -25,12 +27,23 @@ public class AppConsumer {
         Destination destination=session.createTopic(topicName);
         //创建一个消费者
         MessageConsumer consumer=session.createConsumer(destination);
+        MessageConsumer consumer1=session.createConsumer(destination);
         //创建一个监听器
         consumer.setMessageListener(new MessageListener() {
             public void onMessage(Message message) {
                 TextMessage textMessage= (TextMessage) message;
                 try {
-                    System.out.println("接收到信息："+textMessage.getText());
+                    System.out.println("接收到信息1："+textMessage.getText());
+                } catch (JMSException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        consumer1.setMessageListener(new MessageListener() {
+            public void onMessage(Message message) {
+                TextMessage textMessage= (TextMessage) message;
+                try {
+                    System.out.println("接收到信息2："+textMessage.getText());
                 } catch (JMSException e) {
                     e.printStackTrace();
                 }

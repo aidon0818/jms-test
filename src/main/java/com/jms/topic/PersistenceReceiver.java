@@ -20,13 +20,10 @@ public class PersistenceReceiver {
     public static void main(String[] args) {
         ConnectionFactory connectionFactory;//连接工厂
         Connection connection = null;//连接
-
         Session session;//会话 接受或者发送消息的线程
         Topic topic;//消息的目的地
-
         //实例化连接工厂(连接到ActiveMQ服务器)
         connectionFactory = new ActiveMQConnectionFactory(PersistenceReceiver.USERNAME, PersistenceReceiver.PASSWORD, PersistenceReceiver.BROKEURL);
-
         try {
             //通过连接工厂获取连接
             connection = connectionFactory.createConnection();
